@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link href="../static/img/photo_2025-03-29_00-09-25.jpg" rel="icon"/>
+    <script src="../static/script.js"></script>
+    <title>Портфолио</title>
+  </head>
+  <body>
+    <header class="header" id="home">
+      <nav class="header__nav main-nav">
+        <ul class="main-nav__list main-list">
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#home">HOME</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#skills">MY SKILLS</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#projects">PROJECTS</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#feedback">FEEDBACK</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#contacts">CONTACTS</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!-- Секция превью -->
+      <section class="main__home home" id="home">
+        <h1 class="home__title">Nik610</h1>
+        <p class="home__subtitle">WEB-DEVELOPER, PYTHON PROGRAMMER</p>
+      </section>
+      <!-- Секция с рассказом о себе -->
+      <section class="main__about about" id="about">
+        <h2 class="about__title">ABOUT ME</h2>
+        <div class="about__info info-block">
+          <p class="info-block__text">
+            Hi, I'm Nik610, a junior web developer and Python programmer.
+            Currently, I am learning Python and web development, and I plan to explore other programming languages in the future.
+            I am passionate about development and aim to become a skilled web developer.
+          </p>
+        </div>
+      </section>
+
+      <!-- Секция со скиллами -->
+      <section class="main__skills skills" id="skills">
+        <h2 class="skills__title">MY SKILLS</h2>
+        <p class="skills__subtitle">
+          Python / Java(in progress)<br/> <br/>
+          HTML / CSS / JS(all in progress)<br/> <br/>
+          Flask / Tkinter / SQLAlchemy<br/> <br/>
+          Git / GitHub / VSCode<br/> <br/>
+          Minecraft programming(in progress)
+        </p>
+      </section>
+      <!-- Секция с проектами -->
+      <section class="main__projects projects" id="projects">
+        <h2 class="projects__title">PROJECTS</h2>
+          <ul class="skills__list projects-list">
+            <li class="skills-list__skill project">
+              <img
+                class="project__img"
+                src="../static/img/python.png"
+                alt="python"
+                width="150"
+                height="150"
+              />
+              <span class="project__info">Anon_messages</span>
+              <a class="project__button" target="_blank" type="submit" name="button_anon" href="https://github.com/Nik-610/Anon_messages_v2">Open on GitHub</a>
+            </li>
+            <li class="skills-list__skill project">
+              <img
+                class="project__img"
+                src="../static/img/python.png"
+                alt="discord"
+                width="150"
+                height="150"
+              />
+              <span class="project__info">Bot-helper-to-nature</span>
+              <a class="project__button" target="_blank" type="submit" name="button_anon" href="https://github.com/Nik-610/Bot-helper-to-nature">Open on GitHub</a>
+            </li>
+          </ul>
+      </section>
+
+      <!-- Секция с формой обратной связи -->
+      <section class="main__feedback feedback" id="feedback">
+        <h2 class="feedback__title">FEEDBACK</h2>
+        <form action="{{ url_for('send_feedback') }}" method="POST" class="feedback__form form">
+          <label for="email">
+            <input type="email" class="form__input" name="email" id="email" placeholder="Введите E-mail" required />
+          </label>
+          <label for="text">
+            <input name="text" class="form__input" id="text" cols="70" rows="10" required placeholder="Комментарий">
+          </label>
+          <button class="form__button" type="submit" name="send" id="myDiv">ОТПРАВИТЬ</button>
+        </form>
+      </section>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <footer class="footer" id="contacts">
+        <h1 class="contacts_title">Contacts</h1>
+        <ul class="ulf">
+          <li>E-mail: nik610.is.main@gmail.com</li><br/>
+          <li>Telegram: @Nik_610</li><br/>
+          <li>Github: <a class="pro" target="_blank" type="submit" name="gith" href="https://github.com/Nik-610/">Nik-610</a></li>
+        </ul>
+        <p class="ff">© 2011-2025 Nik610, Inc. All rights reserved. Все права защищены.</p>
+      </footer>
+    </main>
+  </body>
+</html>
